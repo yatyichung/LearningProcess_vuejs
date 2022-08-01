@@ -19,17 +19,18 @@
 
     <div id="app">
         <orb v-bind:radius="40" v-bind:color="'white'"></orb>
-        <orb v-for="orb in orbs" v-bind:radius="orb.radius" v-bind:color="orb.color" v-bind:key="orb.id">
+        <orb v-for="orb in orbs" v-bind:radius="orb.radius" v-bind:color="orb.color" v-bind:key="orb.id"
+            v-bind:position="orb.position" v-bind:x="orb.x" v-bind:y="orb.y">
         </orb>
     </div>
 
     <script>
         Vue.component('orb', {
-            props: ['radius', 'color'],
+            props: ['radius', 'color', 'position', 'x', 'y'],
             template:
                 `<span 
 			v-bind:class="'circle'" 
-			v-bind:style="{'width':radius+'px', 'height':radius+'px', 'background':color}"
+			v-bind:style="{'width':radius+'px', 'height':radius+'px', 'background':color, 'position': position, 'left':x+'px', 'top':y+'px'}"
 			v-on:click="prompt();">
 		</span>`,
             methods: {
@@ -46,13 +47,13 @@
 
             data: {
                 orbs: [
-                    { id: 1, radius: 10, color: 'green' },
-                    { id: 2, radius: 15, color: 'purple' },
-                    { id: 3, radius: 20, color: 'black' },
-                    { id: 4, radius: 25, color: 'blue' },
-                    { id: 5, radius: 30, color: 'orange' },
-                    { id: 6, radius: 35, color: 'yellow' },
-                    { id: 7, radius: 45, color: 'red' }
+                    { id: 1, radius: 10, color: 'green', position: 'absolute', x: 20, y: 50 },
+                    { id: 2, radius: 15, color: 'purple', position: 'absolute', x: 40, y: 100 },
+                    { id: 3, radius: 20, color: 'black', position: 'absolute', x: 60, y: 150 },
+                    { id: 4, radius: 25, color: 'blue', position: 'absolute', x: 80, y: 200 },
+                    { id: 5, radius: 30, color: 'orange', position: 'absolute', x: 100, y: 250 },
+                    { id: 6, radius: 35, color: 'yellow', position: 'absolute', x: 120, y: 300 },
+                    { id: 7, radius: 45, color: 'red', position: 'absolute', x: 140, y: 350 }
                 ]
             },
 

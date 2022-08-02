@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+
+    <title>J1 Practice</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .formfield {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app">
+        <h1>Cupcake Problem.</h1>
+        <h2><a href="https://www.cemc.uwaterloo.ca/contests/computing/2022/ccc/juniorEF.pdf">J1 problem form 2022
+                CCC.</a></h2>
+
+        <div class="formfield">
+            <label>Regular Box: <label> <input v-model="box_qty_regular">
+        </div>
+        <div class="formfield">
+            <label>Small Box: <label> <input v-model="box_qty_small">
+        </div>
+        <div id="result">
+            <div><label>show leftover cupcakes:</label><input type="checkbox" v-model="cupcakes_left"></div>
+            <div v-if="cupcakes_left">Cupcakes left: {{cupcakes_left_amount}}</div>
+        </div>
+    </div>
+
+
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                cupcakes_left: false,
+                student_num: 28,
+                left_over: 0,
+                box_qty_regular: 0,
+                box_qty_small: 0,
+                box_value_regular: 8,
+                box_value_small: 3
+            },
+            computed: {
+                cupcakes_left_amount: function () {
+                    return ((this.box_qty_regular * this.box_value_regular) +
+                        (this.box_qty_small * this.box_value_small)) - this.student_num;
+                },
+                left_over_amount: function () {
+                    return this.cupcakes_left_amount;
+                }
+
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>

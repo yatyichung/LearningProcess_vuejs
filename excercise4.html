@@ -21,11 +21,15 @@
     <div id="app">
         <ul>
             <li v-for="part in scene">
-                <span v-if="part.character === 'MACBETH'" v-bind:style="red">
-                    {{part.dialogue}}
+                <span v-if="part.character === 'MACBETH'">
+                    {{part.character}}
+                    <br>
+                    <span v-bind:style="red">{{part.dialogue}}</span>
                 </span>
-                <span v-else v-bind:style="blue">
-                    {{part.dialogue}}
+                <span v-else>
+                    {{part.character}}:
+                    <br>
+                    <span v-bind:style="blue">{{part.dialogue}}</span>
                 </span>
             </li>
         </ul>
